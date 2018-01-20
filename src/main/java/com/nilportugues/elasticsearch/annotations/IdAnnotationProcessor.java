@@ -10,7 +10,7 @@ public class IdAnnotationProcessor<T, ID_TYPE> {
         int total = 0;
         ID_TYPE value = null;
 
-        for (Field field: clazz.getDeclaredFields()) {
+        for (Field field : clazz.getDeclaredFields()) {
             if (field.isAnnotationPresent(Id.class)) {
                 if (null == value) {
                     field.setAccessible(true);
@@ -21,11 +21,11 @@ public class IdAnnotationProcessor<T, ID_TYPE> {
         }
 
         if (total == 0) {
-            throw new RuntimeException("Missing @Id annotation on a property in "+clazz.getCanonicalName());
+            throw new RuntimeException("Missing @Id annotation on a property in " + clazz.getCanonicalName());
         }
 
         if (total > 1) {
-            throw new RuntimeException("More than one @Id annotation was found in "+clazz.getCanonicalName());
+            throw new RuntimeException("More than one @Id annotation was found in " + clazz.getCanonicalName());
         }
 
         return value;
